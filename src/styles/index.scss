@@ -1,0 +1,11 @@
+@import './css/normalize.css';
+
+// base
+@import './sass/base/base.scss';
+
+// container
+@import './sass/container.scss';
+
+//components
+@import './sass/components/header.scss';
+@import './sass/components/footer.scss';

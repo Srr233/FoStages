@@ -1,0 +1,14 @@
+.header {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $brand-primary;
+  }
+  ul {
+    display: flex;
+  }
+  li {
+    padding: 0 2px;
+  }
+}
