@@ -8,6 +8,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+main {
+  height: 100%;
+}
+#root {
+  height: 100%;
+  width: 100%;
+}
 .container {
   padding: 0 10px;
   max-width: 1200px;

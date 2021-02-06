@@ -1,11 +1,10 @@
 import React from 'react';
+import Login from './login/index.jsx';
 
 const App = () => {
   return (
-    <div>
-      <h1>Hi!</h1>
-    </div>
-  )
+      <Login />
+  );
 };
 
 export default App;

@@ -1,0 +1,10 @@
+.login {
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .form {
+    background-color: $brand-danger;
+  }
+}
