@@ -1,20 +1,23 @@
-import React from 'react';
-import Button from '../base/button.jsx';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Login from './login.jsx';
+import Tabs from './Form_tabs.jsx';
 
-const Login = () => {
+const Form = ({ cb }) => {
+  const [typeForm, setTypeForm] = useState('login');
+  const tabsChange = (type) => {
+    setTypeForm(type);
+  }
   return (
-  <div className="login">
-    <form method="put" action="#" className="form">
-      <label htmlFor="email">Email</label>
-      <input type="text" placeholder="Enter Email" name="email" required/>
-      <label htmlFor="psw">Password</label>
-      <input type="password" placeholder="Enter pass" name="psw" required />
-      <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
-      <Button type="submit" name="LOGIN" cb={() => {console.log('click')}}/>
-    </form>
-  </div>
-  );
+    <div className="form-wrapper">
+      <Tabs cb={tabsChange}/>
+      <Login cb={cb} type={typeForm}/>
+    </div>
+  )
 }
 
-export default Login;
+Form.propTypes = {
+  cb: PropTypes.func.isRequired
+}
+
+export default Form;
