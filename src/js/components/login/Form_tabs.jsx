@@ -15,7 +15,7 @@ const Tabs = ({ cb }) => {
   }
 
   return (
-    <ul onClick={clickHandler}>
+    <ul onClick={clickHandler} className="form_tabs">
       <li className="active_tab" id="login">Login</li>
       <li id="register">Register</li>
     </ul>

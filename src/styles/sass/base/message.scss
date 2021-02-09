@@ -1,0 +1,20 @@
+@keyframes popUp {
+  0% {top: 0%;}
+  95% {top: 52%;}
+  100%{top: 50%;}
+}
+.message {
+  position: absolute;
+  width: 50%;
+  height: 20%;
+  top: 0%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: popUp 1 forwards;
+  transition: 1s;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgba($color: $brand-wrong, $alpha: .5);
+}

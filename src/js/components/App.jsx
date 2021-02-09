@@ -54,8 +54,8 @@ const App = () => {
     }
     const responce = await sendReq(options);
 
-    if (!responce.errorIn) {
-      showMessage('BAD BOY');
+    if (responce.errorIn) {
+      showMessage(responce.errorIn);
     } else {
       console.log(responce);
     }

@@ -9,10 +9,10 @@ const Form = ({ cb }) => {
     setTypeForm(type);
   }
   return (
-    <div className="form-wrapper">
+    <section className="form-wrapper">
       <Tabs cb={tabsChange}/>
       <Login cb={cb} type={typeForm}/>
-    </div>
+    </section>
   )
 }
 

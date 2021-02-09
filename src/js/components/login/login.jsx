@@ -42,10 +42,10 @@ const Login = ({ type, cb }) => {
         {isBadPass ? <Message message={ message } /> : ''}
         <form method="put" action="#" className="form">
           <label htmlFor="name">Nickname</label>
-          <input data-nick type="text" placeholder="Enter Email" required />
+          <input data-nick type="text" placeholder="Enter nickName" required />
           <label htmlFor="psw">Password</label>
           <input data-pass type="password" placeholder="Enter pass" required />
-          <Button type="submit" name="LOGIN" cb={ handlers.login } />
+          <Button type="submit" name="login" cb={ handlers.login } />
         </form>
       </div>
     ),
@@ -54,12 +54,12 @@ const Login = ({ type, cb }) => {
         {isBadPass ? <Message message={message} /> : ''}
         <form method="put" action="#" className="form">
           <label htmlFor="name">Nickname</label>
-          <input data-nick type="text" placeholder="Enter Email" required />
+          <input data-nick type="text" placeholder="Enter nickName" required />
           <label htmlFor="psw">Password</label>
           <input data-pass type="password" placeholder="Enter pass" required />
           <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
           <input data-repeat type="password" placeholder="Repeat Password" required />
-          <Button type="submit" name="LOGIN" cb={ handlers.register } />
+          <Button type="submit" name="sign up" cb={ handlers.register } />
         </form>
       </div>
     ) 

@@ -1,0 +1,18 @@
+.form_tabs {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 50%;
+  li {
+    width: 100%;
+    text-align: center;
+    background-color: $brand-info;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.active_tab {
+  background-color: $brand-info-active!important;
+}

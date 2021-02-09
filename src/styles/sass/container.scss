@@ -19,3 +19,8 @@ main {
   padding: 0 10px;
   max-width: 1200px;
 }
+#root.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
