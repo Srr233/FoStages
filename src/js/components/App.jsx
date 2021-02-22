@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './login/index.jsx';
 import sendReq from '../services/sendReq';
 import Message from './base/message.jsx';
 import cbShowMessage from '../services/showMessage';
+import Menu from './menu/Menu.jsx';
+import Games from './games/index.jsx';
 
 const App = () => {
   const paths = {
@@ -12,10 +15,17 @@ const App = () => {
   }
   const [isBadInfo, setIsBadInfo] = useState(false);
   const [message, setMessage] = useState('');
+  const [profile, setProfile] = useState({});
+  console.log(profile);
 
   const showMessage = cbShowMessage(setMessage, setIsBadInfo);
-
-  const send = async (nick, pass, method, updateProfile) => {
+  /* 
+  send is bad function because it has 2 different behavior:
+  1. send updateProfile.
+  2. and use history as updateProfileOrHistory
+  This happened because I don't know why can I use History in this scope
+  */
+  const send = async (nick, pass, method, updateProfileOrHistory) => {
     const correctMethod = paths[method];
     const options = {
       method: correctMethod,
@@ -38,11 +48,11 @@ const App = () => {
         }
         break;
       case 'update': 
-        if (updateProfile) {
+        if (updateProfileOrHistory) {
           options.reqObj = {
             login: nick,
             pass: pass,
-            profile: updateProfile
+            profile: updateProfileOrHistory
           }
         } else {
           throw new Error('need obj update')
@@ -57,14 +67,22 @@ const App = () => {
     if (responce.errorIn) {
       showMessage(responce.errorIn);
     } else {
-      console.log(responce);
+      setProfile(responce);
+      if (updateProfileOrHistory['push']) {
+        updateProfileOrHistory.push('/games');
+      }
     }
   }
   return (
-    <>
+    <BrowserRouter>
     {isBadInfo ? <Message message={ message }/> : ''}
-      <Login cb={send}/>
-    </>
+      <Switch>
+        <Route component={Menu} path="/" exact />
+        
+        <Route render={() => <Login cb={send} />} path="/login" />
+        <Route render={() => <Games />} path="/games" />
+      </Switch>
+    </BrowserRouter>
   );
 };
 

@@ -3,10 +3,12 @@ import Button from '../base/button.jsx';
 import validator from '../../services/validation';
 import Message from '../base/message.jsx';
 import cbShowMessage from '../../services/showMessage';
+import { useHistory } from 'react-router-dom';
 
 const Login = ({ type, cb }) => {
   const [isBadPass, setIsBadPass] = useState(false);
   const [message, setMessage] = useState('');
+  const history = useHistory();
   const showMessage = cbShowMessage(setMessage, setIsBadPass);
   const getNickAndPass = () => {
     const nick = document.querySelector('[data-nick]');
@@ -18,22 +20,24 @@ const Login = ({ type, cb }) => {
   }
   const badPass = 'Password must contain: number, special character, letter in upper and lower case, and must be at least 6 characters';
   const handlers = {
-    login() {
+    async login(e) {
       const info = getNickAndPass();
-      cb(info.nick, info.pass, 'get')
+      cb(info.nick, info.pass, 'get', history);
+      e.preventDefault();
     },
-    register() {
+    async register(e) {
       const info = getNickAndPass();
       const repeat = document.querySelector('[data-repeat]');
       if (info.pass === repeat.value) {
         if (validator(info.pass)) {
-          cb(info.nick, info.pass, 'sign');
+          cb(info.nick, info.pass, 'sign', history);
         } else {
           showMessage(badPass);
         }
       } else {
         showMessage('repeat isn\'t correct');
       }
+      e.preventDefault();
     }
   }
   const form = {

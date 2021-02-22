@@ -2,7 +2,6 @@ const sendReq = () => {
   const serverLink = 'https://four-stages.herokuapp.com/';
 
   const fn = async ({ method, reqObj}) => {
-    console.log(reqObj);
     const responce = await fetch(`${serverLink}${method}`, {
       method: 'POST',
       headers: {

@@ -366,4 +366,25 @@ template {
    cursor: pointer;
    border-color: transparent;
  }
+ input[type="text"] {
+   border: none;
+   background-color: transparent;
+   border-bottom: 1px solid black;
+   margin: 5px 0;
+   color: #fff;
+ }
+  input[type="password"] {
+   border: none;
+   background-color: transparent;
+   border-bottom: 1px solid black;
+   margin: 5px 0;
+   color: #fff;
+ }
+
+ input[type="password"]::placeholder {
+   color: #fff;
+ }
+ input[type="text"]::placeholder {
+   color: #fff;
+ }
  
